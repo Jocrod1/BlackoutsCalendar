@@ -61,9 +61,12 @@ namespace BlackoutsCalendar
             try
             {
                 Blackouts = JsonLoader<ListOfBlackouts>.LoadData(Path);
+                Blackouts.Blackouts = Blackouts.Blackouts.OrderBy(x => x.BlackoutBeginning).ToList();
+                JsonLoader<ListOfBlackouts>.UpdateData(Blackouts, Path);
                 MessageBox.Show("The Json has linked Succesfully!");
                 Calendario Frm = new Calendario();
                 Frm.Blackouts = Blackouts;
+                Frm.Path = Path;
                 Frm.Show();
                 Hide();
             }
@@ -104,6 +107,7 @@ namespace BlackoutsCalendar
                 Blackouts = JsonLoader<ListOfBlackouts>.LoadData(PathOfCreation);
                 Calendario Frm = new Calendario();
                 Frm.Blackouts = Blackouts;
+                Frm.Path = PathOfCreation;
                 Frm.Show();
                 Hide();
             }

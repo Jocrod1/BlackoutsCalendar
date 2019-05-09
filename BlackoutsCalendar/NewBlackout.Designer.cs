@@ -30,14 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewBlackout));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.BtnMinimizar = new System.Windows.Forms.Button();
             this.BtnCerrar = new System.Windows.Forms.Button();
             this.DTBlackout = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.DTEndBlackout = new System.Windows.Forms.DateTimePicker();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.LblTipoRegistro = new System.Windows.Forms.Label();
             this.BtnRegistrar = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,29 +45,12 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.panel2.Controls.Add(this.BtnMinimizar);
             this.panel2.Controls.Add(this.BtnCerrar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(454, 50);
+            this.panel2.Size = new System.Drawing.Size(454, 23);
             this.panel2.TabIndex = 7;
-            // 
-            // BtnMinimizar
-            // 
-            this.BtnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("BtnMinimizar.BackgroundImage")));
-            this.BtnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.BtnMinimizar.FlatAppearance.BorderSize = 0;
-            this.BtnMinimizar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
-            this.BtnMinimizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(63)))), ((int)(((byte)(63)))), ((int)(((byte)(70)))));
-            this.BtnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnMinimizar.Location = new System.Drawing.Point(414, 0);
-            this.BtnMinimizar.Name = "BtnMinimizar";
-            this.BtnMinimizar.Size = new System.Drawing.Size(20, 20);
-            this.BtnMinimizar.TabIndex = 3;
-            this.BtnMinimizar.UseVisualStyleBackColor = true;
-            this.BtnMinimizar.Click += new System.EventHandler(this.BtnMinimizar_Click);
             // 
             // BtnCerrar
             // 
@@ -140,15 +122,15 @@
             this.pictureBox1.TabIndex = 13;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
+            // LblTipoRegistro
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(79, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(288, 44);
-            this.label2.TabIndex = 14;
-            this.label2.Text = "Nuevo Registro";
+            this.LblTipoRegistro.AutoSize = true;
+            this.LblTipoRegistro.Font = new System.Drawing.Font("Century Gothic", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTipoRegistro.Location = new System.Drawing.Point(79, 56);
+            this.LblTipoRegistro.Name = "LblTipoRegistro";
+            this.LblTipoRegistro.Size = new System.Drawing.Size(288, 44);
+            this.LblTipoRegistro.TabIndex = 14;
+            this.LblTipoRegistro.Text = "Nuevo Registro";
             // 
             // BtnRegistrar
             // 
@@ -177,7 +159,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(454, 287);
             this.Controls.Add(this.BtnRegistrar);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblTipoRegistro);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.DTEndBlackout);
@@ -185,9 +167,11 @@
             this.Controls.Add(this.DTBlackout);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewBlackout";
             this.Text = "NewBlackout";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.NewBlackout_FormClosed);
+            this.Load += new System.EventHandler(this.NewBlackout_Load);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -198,14 +182,13 @@
         #endregion
 
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button BtnMinimizar;
         private System.Windows.Forms.Button BtnCerrar;
-        private System.Windows.Forms.DateTimePicker DTBlackout;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker DTEndBlackout;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label LblTipoRegistro;
         private System.Windows.Forms.Button BtnRegistrar;
+        public System.Windows.Forms.DateTimePicker DTBlackout;
+        public System.Windows.Forms.DateTimePicker DTEndBlackout;
     }
 }
