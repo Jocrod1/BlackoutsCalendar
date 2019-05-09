@@ -206,6 +206,9 @@ namespace BlackoutsCalendar
         private void Calendario_Load(object sender, EventArgs e)
         {
 
+            if (Blackouts.Blackouts.Count == 0)
+                return;
+
             DateTime? latest = Blackouts.Blackouts.Max(r => r.BlackoutBeginning);
             DateTime? Firstest = Blackouts.Blackouts.Min(r => r.BlackoutBeginning);
             DateTime l = (DateTime)latest;

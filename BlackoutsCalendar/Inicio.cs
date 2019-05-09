@@ -35,16 +35,6 @@ namespace BlackoutsCalendar
         private void Inicio_Load(object sender, EventArgs e)
         {
             VoidBlackouts = new ListOfBlackouts();
-            VoidBlackouts.Blackouts.Add(new Blackout
-            {
-                BlackoutBeginning = new DateTime(2019, 5, 2, 4, 22, 0),
-                Ending = new DateTime(2019, 5, 2, 8, 22, 0)
-            });
-            VoidBlackouts.Blackouts.Add(new Blackout
-            {
-                BlackoutBeginning = new DateTime(2019, 5, 1, 1, 22, 0),
-                Ending = new DateTime(2019, 5, 1, 5, 22, 0)
-            });
         }
 
         void Inicio_DragEnter(object sender, DragEventArgs e)
@@ -79,37 +69,40 @@ namespace BlackoutsCalendar
         {
             try
             {
-                string name = Microsoft.VisualBasic.Interaction.InputBox("Enter the name of the file");
 
-                if (name == "") {
-                    return;
-                }
-
-                string PathOfCreation = AppDomain.CurrentDomain.BaseDirectory + name + ".json";
-
-                if (File.Exists(PathOfCreation))
-                {
-                    MessageBox.Show("Theres already another file with the same name");
-                    return;
-                }
-
+                SaveFileDialog sfd = new SaveFileDialog();
+                sfd.InitialDirectory = @"C:\";
+                sfd.RestoreDirectory = true;
+                sfd.FileName = "*.json";
+                sfd.DefaultExt = "json";
+                sfd.Filter = "Json Files (*.json)|*.json";
 
                 String Jsonstring = JsonConvert.SerializeObject(VoidBlackouts);
-                using (FileStream fs = File.Create(PathOfCreation))
-                {
-                    Byte[] Info = new UTF8Encoding(true).GetBytes(Jsonstring);
-                    fs.Write(Info, 0, Info.Length);
+
+                if (sfd.ShowDialog() == DialogResult.OK) {
+
+
+                    using (FileStream fs = (FileStream)sfd.OpenFile())
+                    {
+                        Byte[] Info = new UTF8Encoding(true).GetBytes(Jsonstring);
+                        fs.Write(Info, 0, Info.Length);
+                    }
+
+                    MessageBox.Show("The json file has been created in  " +
+                                                    sfd.FileName);
+
+                    Blackouts = JsonLoader<ListOfBlackouts>.LoadData(sfd.FileName);
+                    Calendario Frm = new Calendario();
+                    Frm.Blackouts = Blackouts;
+                    Frm.Path = sfd.FileName;
+                    Frm.Show();
+                    Hide();
+
                 }
 
-                MessageBox.Show("The " + name + ".json file has been created in  " +
-                                                AppDomain.CurrentDomain.BaseDirectory);
 
-                Blackouts = JsonLoader<ListOfBlackouts>.LoadData(PathOfCreation);
-                Calendario Frm = new Calendario();
-                Frm.Blackouts = Blackouts;
-                Frm.Path = PathOfCreation;
-                Frm.Show();
-                Hide();
+                
+               
             }
             catch (Exception ex) {
                 MessageBox.Show(ex.ToString());
